@@ -1,6 +1,7 @@
 # TextHighlightingAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+Code to find the highlited chunk, has been taken from: https://www.npmjs.com/package/highlight-words-core
 
 ## Development server
 
