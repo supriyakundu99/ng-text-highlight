@@ -13,12 +13,12 @@ pipeline {
                 sh 'npm -v'
             }
         }
-        stage('Checkout code from Github') {
-            steps {
-                git url: 'https://github.com/supriyakundu99/Text-Highlighting-Angular.git',
-                    branch: 'master'
-            }
-        }
+        // stage('Checkout code from Github') {
+        //     steps {
+        //         git url: 'https://github.com/supriyakundu99/Text-Highlighting-Angular.git',
+        //             branch: 'master'
+        //     }
+        // }
         stage('Install Node-modules') {
             steps{
                 sh 'npm install'
