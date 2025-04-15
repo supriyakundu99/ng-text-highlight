@@ -1,8 +1,9 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'app-text-highlighter',
-  templateUrl: './text-highlighter.component.html',
+    selector: 'app-text-highlighter',
+    templateUrl: './text-highlighter.component.html',
+    standalone: false
 })
 export class TextHighlighterComponent implements OnChanges {
 
