@@ -1,63 +1,104 @@
-# NgTextHighlighter
+# ng-text-highlighter
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+🔍 A lightweight Angular standalone component to highlight search keywords within a block of text.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📦 Installation
 
 ```bash
-ng generate --help
+npm install ng-text-highlighter
 ```
 
-## Building
+---
 
-To build the library, run:
+## 🚀 Usage
 
-```bash
-ng build ng-text-highlighter
+You can use `TextHighlighterComponent` in **two ways**:
+
+---
+
+### ✅ Option 1: Import as a **Standalone Component**
+
+If you're using Angular 14+ and prefer standalone components:
+
+```ts
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent } from "./app.component";
+import { FormsModule } from "@angular/forms";
+import { TextHighlighterComponent } from 'ng-text-highlighter';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, FormsModule, TextHighlighterComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+**Template Example:**
 
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ng-text-highlighter
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```html
+<div>
+  <h4>Highlighted Text:</h4>
+  <ng-text-highlighter
+    [textToHighlight]="sampleText"
+    [searchKeywords]="sampleSearchText.split(' ')">
+  </ng-text-highlighter>
+</div>
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+### ✅ Option 2: Import via Module (`TextHighlighterModule`)
 
-```bash
-ng e2e
+If you prefer using Angular modules:
+
+```ts
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent } from "./app.component";
+import { FormsModule } from "@angular/forms";
+import { TextHighlighterModule } from 'ng-text-highlighter';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, FormsModule, TextHighlighterModule],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+**Template Example:**
 
-## Additional Resources
+```html
+<div>
+  <h4>Highlighted Text:</h4>
+  <ng-text-highlighter
+    [textToHighlight]="sampleText"
+    [searchKeywords]="['Angular', 'text', 'highlight']">
+  </ng-text-highlighter>
+</div>
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 🧠 Inputs
+
+| Input             | Type       | Description                                      |
+|-------------------|------------|--------------------------------------------------|
+| `textToHighlight` | `string`   | The main text where keywords will be highlighted |
+| `searchKeywords`  | `string[]` | List of keywords to highlight                    |
+
+---
+
+## 📄 License
+
+MIT © [Supriya Kundu](https://github.com/supriyakundu99)
+
+---
+
+## ⭐ Support
+
+Give this repo a ⭐ if you find it useful!
