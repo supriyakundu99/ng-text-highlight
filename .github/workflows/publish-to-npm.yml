@@ -6,9 +6,10 @@ on:
       - main  # Trigger on pushes to the main branch
     paths:
       - 'projects/ng-text-highlighter/**'  # Trigger only when changes happen to the library
+      - '.github/**'
 
 jobs:
-  build-and-publish:
+  build-and-publish-to-npm:
     runs-on: ubuntu-latest
 
     steps:
