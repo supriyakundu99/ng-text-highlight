@@ -1,6 +1,6 @@
 {
   "name": "ng-text-highlighter",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "A lightweight standalone Angular 19 component/module for highlighting text.",
   "author": "Supriya Kundu",
   "license": "MIT",
@@ -20,5 +20,16 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/supriyakundu99/ng-text-highlighter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/supriyakundu99/ng-text-highlighter/issues"
+  },
+  "homepage": "https://github.com/supriyakundu99/ng-text-highlighter#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }

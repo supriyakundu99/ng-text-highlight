@@ -1,4 +1,4 @@
-name: Publish to npm
+name: Publish GitHub Packages
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - '.github/**'
 
 jobs:
-  build-and-publish-to-npm:
+  publish-to-github-packages:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.14.0'  # Explicit and specific Node version
+          node-version: '22.14.0'
+          registry-url: 'https://npm.pkg.github.com'
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
@@ -37,13 +38,13 @@ jobs:
           npm run build:library
           npm run build:prod
 
-      - name: Authenticate with npm
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+      - name: Authenticate with GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
-      - name: Publish Library to npm
+      - name: Publish Library to GitHub Packages
         run: |
           cd dist/ng-text-highlighter
-          npm publish
+          npm publish --access public
 
       - name: Create Release Tag (optional)
         env:
