@@ -3,9 +3,9 @@ name: Publish to npm
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the main branch
+      - main
     paths:
-      - 'projects/ng-text-highlighter/**'  # Trigger only when changes happen to the library
+      - 'projects/ng-text-highlighter/**'
       - '.github/**'
 
 jobs:
@@ -13,51 +13,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the code
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    # Set up Node.js
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22'  # You can set this to whatever version you're using
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.0'  # Explicit and specific Node version
 
-    # Cache npm dependencies for faster installs
-    - name: Cache npm dependencies
-      uses: actions/cache@v4
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-    # Install dependencies
-    - name: Install dependencies
-      run: |
-        npm install
+      - name: Install dependencies
+        run: npm install
 
-    # Build the library and app
-    - name: Build library and app
-      run: |
-        npm run build:library
-        npm run build:prod
+      - name: Build library and app
+        run: |
+          npm run build:library
+          npm run build:prod
 
-    # Authenticate with npm (using GitHub secrets)
-    - name: Authenticate with npm
-      run: |
-        echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-      env:
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
 
-    # Publish the library to npm
-    - name: Publish Library to npm
-      run: |
-        cd dist/ng-text-highlighter
-        npm publish --access public  # Make sure it's public or adjust according to your needs
+      - name: Publish Library to npm
+        run: |
+          cd dist/ng-text-highlighter
+          npm publish --access public
 
-    # Optionally, you can tag the commit and create a new release after publishing
-    - name: Create Release Tag (optional)
-      run: |
-        git tag v$(date +'%Y%m%d%H%M%S')
-        git push origin --tags
+      - name: Create Release Tag (optional)
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git tag v$(date +'%Y%m%d%H%M%S')
+          git push origin --tags
