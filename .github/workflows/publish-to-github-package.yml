@@ -46,6 +46,11 @@ jobs:
           cd dist/ng-text-highlighter
           npm pkg set name="@supriyakundu99/ng-text-highlighter"
           npm pkg set publishConfig.registry="https://npm.pkg.github.com"
+      
+      - name: Print final package.json for verification
+        run: |
+          echo "Final package.json:"
+          cat dist/ng-text-highlighter/package.json
 
       - name: Publish Library to GitHub Packages
         run: |
