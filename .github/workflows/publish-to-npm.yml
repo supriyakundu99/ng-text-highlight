@@ -16,10 +16,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Set up Node.js and Authenticate with npm
         uses: actions/setup-node@v4
         with:
-          node-version: '22.14.0'  # Explicit and specific Node version
+          node-version: '22.14.0'
+          registry-url: 'https://registry.npmjs.org/'
+          always-auth: true
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
@@ -32,13 +35,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build library and app
+      - name: Build the library and app
         run: |
           npm run build:library
           npm run build:prod
-
-      - name: Authenticate with npm
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
 
       - name: Publish Library to npm
         run: |
