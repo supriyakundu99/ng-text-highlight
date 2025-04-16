@@ -15,7 +15,7 @@ pipeline {
         }
         // stage('Checkout code from Github') {
         //     steps {
-        //         git url: 'https://github.com/supriyakundu99/Text-Highlighting-Angular.git',
+        //         git url: 'https://github.com/supriyakundu99/main-app.git',
         //             branch: 'master'
         //     }
         // }

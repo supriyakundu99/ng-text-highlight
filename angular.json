@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Text-Highlighting-Angular": {
+    "main-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": {
-              "base": "dist/text-highlighting-angular"
+              "base": "dist/main-app"
             },
             "index": "src/index.html",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Text-Highlighting-Angular:build:production"
+              "buildTarget": "main-app:build:production"
             },
             "development": {
-              "buildTarget": "Text-Highlighting-Angular:build:development"
+              "buildTarget": "main-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Text-Highlighting-Angular:build"
+            "buildTarget": "main-app:build"
           }
         },
         "test": {
@@ -96,6 +96,39 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "ng-text-highlighter": {
+      "projectType": "library",
+      "root": "projects/ng-text-highlighter",
+      "sourceRoot": "projects/ng-text-highlighter/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-text-highlighter/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-text-highlighter/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-text-highlighter/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ng-text-highlighter/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }

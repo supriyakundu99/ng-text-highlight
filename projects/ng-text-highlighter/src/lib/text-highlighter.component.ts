@@ -2,7 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-    selector: 'app-text-highlighter',
+    selector: 'ng-text-highlighter',
     templateUrl: './text-highlighter.component.html',
     imports: [NgFor, NgIf],
     standalone: true
