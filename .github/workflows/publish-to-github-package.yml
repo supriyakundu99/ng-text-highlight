@@ -41,7 +41,7 @@ jobs:
         run: npm run patch-package-github
 
       - name: Authenticate with GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: Build library and app
         run: |
