@@ -57,7 +57,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           cd dist/ng-text-highlight
-          npm publish || echo "⚠️ Version already exists. Skipping publish."
+          npm publish
 
       - name: Create Release Tag
         env:
