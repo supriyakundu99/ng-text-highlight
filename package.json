@@ -12,7 +12,8 @@
     "build": "npm run build:library && npm run build:app",
     "build:prod": "npm run build:library && npm run build:app --configuration=production",
     "serve": "npm run build:library && ng serve main-app",
-    "serve:prod": "npm run build:library && ng serve main-app --configuration=production"
+    "serve:prod": "npm run build:library && ng serve main-app --configuration=production",
+    "patch-package": "node scripts/patch-package-json.js"
   },
   "private": true,
   "dependencies": {

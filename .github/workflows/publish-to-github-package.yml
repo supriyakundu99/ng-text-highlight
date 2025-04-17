@@ -7,10 +7,14 @@ on:
     paths:
       - 'projects/ng-text-highlighter/**'
       - '.github/**'
+      - 'scripts/patch-package-json.js'
 
 jobs:
   publish-to-github-packages:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
 
     steps:
       - name: Checkout Repository
@@ -33,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Patch source package.json for GitHub Packages
+        run: npm run patch-package
+
       - name: Build library and app
         run: |
           npm run build:library
@@ -41,12 +48,6 @@ jobs:
       - name: Authenticate with GitHub Packages
         run: echo "@supriyakundu99:registry=https://npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
-      - name: Patch package.json for GitHub Packages
-        run: |
-          cd dist/ng-text-highlighter
-          npm pkg set name="@supriyakundu99/ng-text-highlighter"
-          npm pkg set publishConfig.registry="https://npm.pkg.github.com"
-      
       - name: Print final package.json for verification
         run: |
           echo "Final package.json:"
