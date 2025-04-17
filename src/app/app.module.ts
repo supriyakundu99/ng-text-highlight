@@ -3,11 +3,11 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import "zone.js";
 import { FormsModule } from "@angular/forms";
-import { TextHighlighterComponent } from 'ng-text-highlighter';
+import { TextHighlightComponent } from 'ng-text-highlight';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, FormsModule, TextHighlighterComponent],
+  imports: [BrowserModule, FormsModule, TextHighlightComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

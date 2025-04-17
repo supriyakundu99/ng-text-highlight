@@ -2,12 +2,12 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-    selector: 'ng-text-highlighter',
-    templateUrl: './text-highlighter.component.html',
+    selector: 'ng-text-highlight',
+    templateUrl: './text-highlight.component.html',
     imports: [NgFor, NgIf],
     standalone: true
 })
-export class TextHighlighterComponent implements OnChanges {
+export class TextHighlightComponent implements OnChanges {
 
   @Input() textToHighlight = '';
   @Input() searchKeywords!: Array<string>;

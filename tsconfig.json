@@ -12,8 +12,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "ng-text-highlighter": [
-        "./dist/ng-text-highlighter"
+      "ng-text-highlight": [
+        "./dist/ng-text-highlight"
       ]
     },
     "sourceMap": true,

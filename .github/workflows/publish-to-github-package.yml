@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'projects/ng-text-highlighter/**'
+      - 'projects/ng-text-highlight/**'
       - '.github/**'
       - 'scripts/patch-package-json.js'
 
@@ -51,11 +51,11 @@ jobs:
       - name: Print final package.json for verification
         run: |
           echo "Final package.json:"
-          cat dist/ng-text-highlighter/package.json
+          cat dist/ng-text-highlight/package.json
 
       - name: Publish Library to GitHub Packages
         run: |
-          cd dist/ng-text-highlighter
+          cd dist/ng-text-highlight
           npm publish
 
       - name: Create Release Tag (optional)

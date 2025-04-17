@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'projects/ng-text-highlighter/**'
+      - 'projects/ng-text-highlight/**'
       - '.github/**'
 
 jobs:
@@ -42,7 +42,7 @@ jobs:
 
       - name: Publish Library to npm
         run: |
-          cd dist/ng-text-highlighter
+          cd dist/ng-text-highlight
           npm publish
 
       - name: Create Release Tag (optional)

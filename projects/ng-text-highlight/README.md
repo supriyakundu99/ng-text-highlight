@@ -1,4 +1,4 @@
-# ng-text-highlighter
+# ng-text-highlight
 
 🔍 A lightweight Angular standalone component to highlight search keywords within a block of text.
 
@@ -7,7 +7,7 @@
 ## 📦 Installation
 
 ```bash
-npm install ng-text-highlighter
+npm install ng-text-highlight
 ```
 
 ---
@@ -27,7 +27,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
-import { TextHighlighterComponent } from 'ng-text-highlighter';
+import { TextHighlighterComponent } from 'ng-text-highlight';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,10 +42,10 @@ export class AppModule {}
 ```html
 <div>
   <h4>Highlighted Text:</h4>
-  <ng-text-highlighter
+  <ng-text-highlight
     [textToHighlight]="sampleText"
     [searchKeywords]="sampleSearchText.split(' ')">
-  </ng-text-highlighter>
+  </ng-text-highlight>
 </div>
 ```
 
@@ -60,7 +60,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
-import { TextHighlighterModule } from 'ng-text-highlighter';
+import { TextHighlighterModule } from 'ng-text-highlight';
 
 @NgModule({
   declarations: [AppComponent],
@@ -75,10 +75,10 @@ export class AppModule {}
 ```html
 <div>
   <h4>Highlighted Text:</h4>
-  <ng-text-highlighter
+  <ng-text-highlight
     [textToHighlight]="sampleText"
     [searchKeywords]="['Angular', 'text', 'highlight']">
-  </ng-text-highlighter>
+  </ng-text-highlight>
 </div>
 ```
 
