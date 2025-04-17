@@ -27,7 +27,12 @@ jobs:
           registry-url: 'https://npm.pkg.github.com/'
 
       - name: Authenticate with GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }}" > ~/.npmrc
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }}" > ~/.npmrc
+          echo "registry=https://npm.pkg.github.com" >> ~/.npmrc
+
+      - name: Debug .npmrc content
+        run: cat ~/.npmrc
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
