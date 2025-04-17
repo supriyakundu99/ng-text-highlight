@@ -44,3 +44,12 @@ jobs:
         run: |
           cd dist/ng-text-highlighter
           npm publish
+
+      - name: Create Release Tag (optional)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git tag v$(date +'%Y%m%d%H%M%S')
+          git push origin --tags

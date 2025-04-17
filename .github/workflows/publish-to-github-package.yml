@@ -39,7 +39,7 @@ jobs:
           npm run build:prod
 
       - name: Authenticate with GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+        run: echo "@supriyakundu99:registry=https://npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: Patch package.json for GitHub Packages
         run: |
@@ -56,3 +56,12 @@ jobs:
         run: |
           cd dist/ng-text-highlighter
           npm publish
+
+      - name: Create Release Tag (optional)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git tag v$(date +'%Y%m%d%H%M%S')
+          git push origin --tags
