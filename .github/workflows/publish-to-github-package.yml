@@ -40,13 +40,13 @@ jobs:
       - name: Patch source package.json for GitHub Packages
         run: npm run patch-package
 
+      - name: Authenticate with GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+
       - name: Build library and app
         run: |
           npm run build:library
           npm run build:prod
-
-      - name: Authenticate with GitHub Packages
-        run: echo "@supriyakundu99:registry=https://npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: Print final package.json for verification
         run: |
