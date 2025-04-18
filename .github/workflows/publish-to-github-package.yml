@@ -26,12 +26,12 @@ jobs:
           node-version: '22.14.0'
           registry-url: 'https://npm.pkg.github.com/'
 
-      - name: Authenticate with GitHub Packages (npm login)
+      - name: Authenticate with GitHub Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }}
         run: |
-          npm login --registry=https://npm.pkg.github.com/ --scope=@supriyakundu99 \
-            --username=${{ secrets.GITHUB_USERNAME }} \
-            --password=${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }} \
-            --email=${{ secrets.GITHUB_EMAIL }}
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          echo "@supriyakundu99:registry=https://npm.pkg.github.com/" >> ~/.npmrc
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
@@ -53,9 +53,7 @@ jobs:
           npm run build:prod
 
       - name: Show final package.json
-        run: |
-          echo "📦 Final package.json:"
-          cat dist/ng-text-highlight/package.json
+        run: cat dist/ng-text-highlight/package.json
 
       - name: Publish to GitHub Packages
         run: |
