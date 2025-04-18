@@ -5,16 +5,14 @@ on:
     branches:
       - main
     paths:
-      - 'projects/ng-text-highlight/**'
-      - '.github/**'
-      - 'scripts/patch-package-json-github.js'
+      - "projects/ng-text-highlight/**"
+      - ".github/**"
+      - "scripts/patch-package-json-github.js"
 
 jobs:
-  publish-to-github-packages:
+  build:
+    name: Build Library
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
 
     steps:
       - name: Checkout Repository
@@ -23,12 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.14.0'
-          registry-url: 'https://npm.pkg.github.com/'
-          scope: '@supriyakundu99'
-
-      - name: Set up Registry for GitHub Packages
-        run: echo "registry=https://npm.pkg.github.com/@supriyakundu99" >> .npmrc
+          node-version: "22.14.0"
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
@@ -49,8 +42,33 @@ jobs:
           npm run build:library
           npm run build:prod
 
-      - name: Show final package.json
-        run: cat dist/ng-text-highlight/package.json
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ng-text-highlight-dist
+          path: dist/ng-text-highlight/
+
+  publish:
+    name: Publish to GitHub Packages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    
+    steps:
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ng-text-highlight-dist
+          path: dist/ng-text-highlight/
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.14.0"
+          registry-url: "https://npm.pkg.github.com/"
+          scope: "@supriyakundu99"
 
       - name: Publish to GitHub Packages
         run: |
