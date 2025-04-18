@@ -25,13 +25,9 @@ jobs:
         with:
           node-version: '22.14.0'
           registry-url: 'https://npm.pkg.github.com/'
-
-      - name: Authenticate with GitHub Packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }}
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-          echo "@supriyakundu99:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+          scope: '@supriyakundu99'
+          always-auth: true
+          token: ${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }}
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
