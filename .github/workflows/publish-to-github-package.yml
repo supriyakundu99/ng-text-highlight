@@ -49,7 +49,7 @@ jobs:
 
       - name: Login to GitHub Package Registry manually
         run: |
-          echo -e "${{ secrets.GITHUB_USERNAME }}\n${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }}" | npm login --registry=https://npm.pkg.github.com/
+          echo -e "supriyakundu99\n${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }}" | npm login --registry=https://npm.pkg.github.com/
 
       - name: Publish to GitHub Packages
         run: |
