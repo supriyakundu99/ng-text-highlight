@@ -24,6 +24,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.14.0'
+          registry-url: 'https://npm.pkg.github.com/'
+          scope: '@supriyakundu99'
+
+      - name: Set up Registry for GitHub Packages
+        run: echo "registry=https://npm.pkg.github.com/@supriyakundu99" >> .npmrc
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
@@ -46,11 +51,6 @@ jobs:
 
       - name: Show final package.json
         run: cat dist/ng-text-highlight/package.json
-
-      - name: Login to GitHub Package Registry
-        run: |
-          npm install -g npm-cli-login
-          npm-cli-login -u supriyakundu99 -p ${{ secrets.PACKAGE_PUBLISH_GITHUB_TOKEN }} -e supriya.kundu.1999@gmail.com -r https://npm.pkg.github.com/
 
       - name: Publish to GitHub Packages
         run: |

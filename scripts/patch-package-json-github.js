@@ -17,7 +17,7 @@ try {
 
 // Patch the fields
 packageJson.name = '@supriyakundu99/ng-text-highlight';
-packageJson.publishConfig.registry = 'https://npm.pkg.github.com/';
+packageJson.publishConfig.registry = 'https://npm.pkg.github.com/@supriyakundu99';
 
 // Write it back
 try {
