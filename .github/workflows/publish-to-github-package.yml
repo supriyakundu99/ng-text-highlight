@@ -55,4 +55,6 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           cd dist/ng-text-highlight
-          npm publish --registry=https://npm.pkg.github.com/
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
