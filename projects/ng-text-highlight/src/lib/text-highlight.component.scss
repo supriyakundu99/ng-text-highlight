@@ -1,4 +1,45 @@
+/* Default highlight style */
 .highlight {
   background-color: yellow;
   color: black;
+  font-weight: bold;
+}
+
+/* Prebuilt styles */
+
+/* Light green highlight */
+.highlight-green {
+  background-color: lightgreen;
+  color: black;
+  font-weight: bold;
+}
+
+/* Light blue highlight */
+.highlight-blue {
+  background-color: lightblue;
+  color: black;
+  font-style: italic;
+}
+
+/* Red highlight */
+.highlight-red {
+  background-color: lightcoral;
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Purple highlight */
+.highlight-purple {
+  background-color: lavender;
+  color: darkviolet;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Orange highlight */
+.highlight-orange {
+  background-color: orange;
+  color: black;
+  font-weight: bold;
 }

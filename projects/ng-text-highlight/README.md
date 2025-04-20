@@ -88,10 +88,54 @@ export class AppModule {}
 
 ## 🧠 Inputs
 
-| Input      | Type       | Description                                      |
-| ---------- | ---------- | ------------------------------------------------ |
-| `fullText` | `string`   | The main text where keywords will be highlighted |
-| `keywords` | `string[]` | List of keywords to highlight                    |
+| Input            | Type                        | Description                                                                   |
+| ---------------- | --------------------------- | ----------------------------------------------------------------------------- |
+| `fullText`       | `string`                    | The main text where keywords will be highlighted                              |
+| `keywords`       | `string[]`                  | List of keywords to highlight                                                 |
+| `caseSensitive`  | `boolean`                   | Whether the search should be case-sensitive (default: `false`)                |
+| `highlightClass` | `string`                    | Custom CSS class for highlighted text (default: `'highlight'`)                |
+| `highlightStyle` | `{ [key: string]: string }` | Inline styles for highlighted text (e.g., `{ 'background-color': 'yellow' }`) |
+
+---
+
+## 🎨 Prebuilt Styles
+
+The following prebuilt styles are available for quick use:
+
+| Class Name         | Description                       |
+| ------------------ | --------------------------------- |
+| `highlight`        | Default yellow highlight          |
+| `highlight-green`  | Light green highlight             |
+| `highlight-blue`   | Light blue highlight              |
+| `highlight-red`    | Red highlight with white text     |
+| `highlight-purple` | Purple highlight with italic text |
+| `highlight-orange` | Orange highlight                  |
+
+**Example Usage:**
+
+```html
+<ng-text-highlight
+  [fullText]="sampleText"
+  [keywords]="['Angular', 'highlight']"
+  [highlightClass]="'highlight-green'"
+></ng-text-highlight>
+```
+
+---
+
+## 🎨 Custom Inline Styles
+
+You can also pass custom inline styles using the `highlightStyle` input:
+
+**Example Usage:**
+
+```html
+<ng-text-highlight
+  [fullText]="sampleText"
+  [keywords]="['Angular', 'highlight']"
+  [highlightStyle]="{ 'background-color': 'lightblue', 'color': 'black', 'font-weight': 'bold' }"
+></ng-text-highlight>
+```
 
 ---
 

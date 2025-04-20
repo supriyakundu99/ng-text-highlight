@@ -37,11 +37,20 @@
 </div>
 
 <div>
-  <h4>Custom Inline CSS Highlighted Text:</h4>
+  <h4>Custom Style CSS Highlighted Text:</h4>
   <ng-text-highlight
     [fullText]="sampleText"
     [keywords]="sampleSearchText.split(' ')"
     [caseSensitive]="true"
     [highlightStyle]="{ 'background-color': 'lightgreen', 'color': 'black', 'font-weight': 'bold' }"
+  ></ng-text-highlight>
+</div>
+
+<div>
+  <h4>Custom style Highlighted Text:</h4>
+  <ng-text-highlight
+    [fullText]="sampleText"
+    [keywords]="sampleSearchText.split(' ')"
+    [highlightClass]="'highlight-blue'"
   ></ng-text-highlight>
 </div>
