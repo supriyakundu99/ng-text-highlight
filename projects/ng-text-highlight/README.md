@@ -27,7 +27,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
-import { TextHighlightComponent } from 'ng-text-highlight';
+import { TextHighlightComponent } from "ng-text-highlight";
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,8 +43,9 @@ export class AppModule {}
 <div>
   <h4>Highlighted Text:</h4>
   <ng-text-highlight
-    [textToHighlight]="sampleText"
-    [searchKeywords]="sampleSearchText.split(' ')">
+    [fullText]="sampleText"
+    [keywords]="sampleSearchText.split(' ')"
+  >
   </ng-text-highlight>
 </div>
 ```
@@ -60,7 +61,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
-import { TextHighlightModule } from 'ng-text-highlight';
+import { TextHighlightModule } from "ng-text-highlight";
 
 @NgModule({
   declarations: [AppComponent],
@@ -76,8 +77,9 @@ export class AppModule {}
 <div>
   <h4>Highlighted Text:</h4>
   <ng-text-highlight
-    [textToHighlight]="sampleText"
-    [searchKeywords]="['Angular', 'text', 'highlight']">
+    [fullText]="sampleText"
+    [keywords]="['Angular', 'text', 'highlight']"
+  >
   </ng-text-highlight>
 </div>
 ```
@@ -86,16 +88,24 @@ export class AppModule {}
 
 ## 🧠 Inputs
 
-| Input             | Type       | Description                                      |
-|-------------------|------------|--------------------------------------------------|
-| `textToHighlight` | `string`   | The main text where keywords will be highlighted |
-| `searchKeywords`  | `string[]` | List of keywords to highlight                    |
+| Input      | Type       | Description                                      |
+| ---------- | ---------- | ------------------------------------------------ |
+| `fullText` | `string`   | The main text where keywords will be highlighted |
+| `keywords` | `string[]` | List of keywords to highlight                    |
 
 ---
 
 ## 📄 License
 
 This package is licensed under the MIT License. See the [LICENSE](./projects/ng-text-highlight/LICENSE) file for details.
+
+---
+
+## 📸 Example Output
+
+Below is an example of how the `ng-text-highlight` component highlights text:
+
+![Highlighted Text Example](https://github.com/supriyakundu99/ng-text-highlight/blob/main/assets/Example.png)
 
 ---
 

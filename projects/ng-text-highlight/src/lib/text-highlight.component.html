@@ -1,4 +1,6 @@
-<ng-container *ngFor="let subtext of subtexts">
-  <ng-container *ngIf="subtext.isMarked"><mark>{{subtext.text}}</mark></ng-container>
-  <ng-container *ngIf="!subtext.isMarked">{{subtext.text}}</ng-container>
+<ng-container *ngFor="let segment of highlightedSegments">
+  <ng-container *ngIf="segment.isHighlighted"
+    ><mark>{{ segment.text }}</mark></ng-container
+  >
+  <ng-container *ngIf="!segment.isHighlighted">{{ segment.text }}</ng-container>
 </ng-container>
