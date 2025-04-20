@@ -55,7 +55,7 @@ jobs:
     permissions:
       packages: write
       contents: read
-    
+
     steps:
       - name: Download dist artifact
         uses: actions/download-artifact@v4
@@ -73,6 +73,15 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           cd dist/ng-text-highlight
-          npm publish
+          PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VERSION=$(node -p "require('./package.json').version")
+
+          echo "Checking if version $PKG_VERSION of $PKG_NAME already exists on npm..."
+
+          if npm view "$PKG_NAME@$PKG_VERSION" > /dev/null 2>&1; then
+            echo "::warning ::Version $PKG_VERSION of $PKG_NAME already exists. Skipping publish."
+          else
+            npm publish
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
