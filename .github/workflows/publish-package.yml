@@ -126,7 +126,7 @@ jobs:
           path: scripts/
 
       - name: Patch package.json for GitHub Packages
-        run: npm run patch-package-github
+        run: node scripts/patch-package-json-github.js
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
