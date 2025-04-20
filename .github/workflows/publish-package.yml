@@ -19,6 +19,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Upload Build Scripts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-scripts
+          path: scripts/
+
       - name: Set Node Version Output
         id: set-node-version
         run: echo "node=22.14.0" >> $GITHUB_OUTPUT
@@ -112,6 +118,12 @@ jobs:
         with:
           name: ng-text-highlight-dist
           path: dist/ng-text-highlight/
+
+      - name: Download Build Scripts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-scripts
+          path: scripts/
 
       - name: Patch package.json for GitHub Packages
         run: npm run patch-package-github
