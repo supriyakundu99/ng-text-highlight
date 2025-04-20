@@ -10,7 +10,7 @@
     "build:library": "ng build ng-text-highlight --configuration=production",
     "build:app": "ng build main-app --configuration=production",
     "build": "npm run build:library && npm run build:app",
-    "build:prod": "npm run build:library && npm run build:app --configuration=production",
+    "build:prod": "npm run build:library && npm run build:app",
     "serve": "npm run build:library && ng serve main-app",
     "serve:prod": "npm run build:library && ng serve main-app --configuration=production",
     "patch-package-github": "node scripts/patch-package-json-github.js"
