@@ -3,8 +3,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const rootDir = path.resolve(__dirname, '..'); // project root
+const rootDir = path.resolve(__dirname, '..');
 const packageJsonPath = path.join(rootDir, 'dist', 'ng-text-highlight', 'package.json');
+console.log('Patching package.json at:', rootDir, packageJsonPath);
 
 // Load and parse package.json
 let packageJson;
