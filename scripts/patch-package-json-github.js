@@ -3,8 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// Use Windows-style path if running locally on Windows, but path.join works across platforms
-const packageJsonPath = path.join(__dirname, '../dist', 'ng-text-highlight', 'package.json');
+const rootDir = path.resolve(__dirname, '..'); // project root
+const packageJsonPath = path.join(rootDir, 'dist', 'ng-text-highlight', 'package.json');
 
 // Load and parse package.json
 let packageJson;
