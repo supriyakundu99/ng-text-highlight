@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { AfterViewChecked, Component } from "@angular/core";
 import { CodeExample } from "./usage.model";
 import { NgClass, NgFor, NgIf } from "@angular/common";
 import { HighlightService } from "src/app/services/highlight.service";
@@ -9,7 +9,7 @@ import { HighlightService } from "src/app/services/highlight.service";
   templateUrl: "./usage.component.html",
   styleUrl: "./usage.component.scss",
 })
-export class UsageComponent {
+export class UsageComponent implements AfterViewChecked {
   tabs = ["Standalone Component", "Module Import"];
   activeTab = 0;
 
