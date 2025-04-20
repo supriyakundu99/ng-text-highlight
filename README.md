@@ -1,28 +1,104 @@
-# TextHighlightingAngular
+# ng-text-highlight
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
-Code to find the highlited chunk, has been taken from: https://www.npmjs.com/package/highlight-words-core
+🔍 A lightweight Angular standalone component to highlight search keywords within a block of text.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 📦 Installation
 
-## Code scaffolding
+```bash
+npm install ng-text-highlight
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🚀 Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+You can use `TextHighlightComponent` in **two ways**:
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### ✅ Option 1: Import as a **Standalone Component**
 
-## Running end-to-end tests
+If you're using Angular 14+ and prefer standalone components:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```ts
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent } from "./app.component";
+import { FormsModule } from "@angular/forms";
+import { TextHighlightComponent } from 'ng-text-highlight';
 
-## Further help
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, FormsModule, TextHighlightComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Template Example:**
+
+```html
+<div>
+  <h4>Highlighted Text:</h4>
+  <ng-text-highlight
+    [textToHighlight]="sampleText"
+    [searchKeywords]="sampleSearchText.split(' ')">
+  </ng-text-highlight>
+</div>
+```
+
+---
+
+### ✅ Option 2: Import via Module (`TextHighlightModule`)
+
+If you prefer using Angular modules:
+
+```ts
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent } from "./app.component";
+import { FormsModule } from "@angular/forms";
+import { TextHighlightModule } from 'ng-text-highlight';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, FormsModule, TextHighlightModule],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+**Template Example:**
+
+```html
+<div>
+  <h4>Highlighted Text:</h4>
+  <ng-text-highlight
+    [textToHighlight]="sampleText"
+    [searchKeywords]="['Angular', 'text', 'highlight']">
+  </ng-text-highlight>
+</div>
+```
+
+---
+
+## 🧠 Inputs
+
+| Input             | Type       | Description                                      |
+|-------------------|------------|--------------------------------------------------|
+| `textToHighlight` | `string`   | The main text where keywords will be highlighted |
+| `searchKeywords`  | `string[]` | List of keywords to highlight                    |
+
+---
+
+## 📄 License
+
+This package is licensed under the MIT License. See the [LICENSE](./projects/ng-text-highlight/LICENSE) file for details.
+
+---
+
+## ⭐ Support
+
+Give this repo a ⭐ if you find it useful!

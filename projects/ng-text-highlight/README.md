@@ -14,7 +14,7 @@ npm install ng-text-highlight
 
 ## 🚀 Usage
 
-You can use `TextHighlighterComponent` in **two ways**:
+You can use `TextHighlightComponent` in **two ways**:
 
 ---
 
@@ -27,11 +27,11 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
-import { TextHighlighterComponent } from 'ng-text-highlight';
+import { TextHighlightComponent } from 'ng-text-highlight';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, FormsModule, TextHighlighterComponent],
+  imports: [BrowserModule, FormsModule, TextHighlightComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
@@ -51,7 +51,7 @@ export class AppModule {}
 
 ---
 
-### ✅ Option 2: Import via Module (`TextHighlighterModule`)
+### ✅ Option 2: Import via Module (`TextHighlightModule`)
 
 If you prefer using Angular modules:
 
@@ -60,11 +60,11 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
-import { TextHighlighterModule } from 'ng-text-highlight';
+import { TextHighlightModule } from 'ng-text-highlight';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, FormsModule, TextHighlighterModule],
+  imports: [BrowserModule, FormsModule, TextHighlightModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
@@ -95,7 +95,7 @@ export class AppModule {}
 
 ## 📄 License
 
-MIT © [Supriya Kundu](https://github.com/supriyakundu99)
+This package is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ---
 
