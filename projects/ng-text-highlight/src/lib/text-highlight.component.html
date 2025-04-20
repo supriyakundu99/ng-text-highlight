@@ -1,6 +1,8 @@
-<ng-container *ngFor="let segment of highlightedSegments">
-  <ng-container *ngIf="segment.isHighlighted"
-    ><mark>{{ segment.text }}</mark></ng-container
-  >
-  <ng-container *ngIf="!segment.isHighlighted">{{ segment.text }}</ng-container>
-</ng-container>
+<span *ngFor="let segment of highlightedSegments">
+  <span
+    *ngIf="segment.isHighlighted; else normalText"
+    [ngClass]="highlightClass"
+    [ngStyle]="highlightStyle"
+  >{{ segment.text }}</span>
+  <ng-template #normalText>{{ segment.text }}</ng-template>
+</span>

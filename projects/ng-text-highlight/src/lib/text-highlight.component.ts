@@ -1,7 +1,8 @@
-import { NgFor, NgIf } from "@angular/common";
+import { NgClass, NgFor, NgIf, NgStyle } from "@angular/common";
 import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { TextSegment } from "./models/text-segment";
 import { findAllMatches } from "./services/text-highlight.service";
+import { TextChunk } from "./models/text-chunk";
 
 /**
  * TextHighlightComponent
@@ -10,7 +11,8 @@ import { findAllMatches } from "./services/text-highlight.service";
 @Component({
   selector: "ng-text-highlight",
   templateUrl: "./text-highlight.component.html",
-  imports: [NgFor, NgIf],
+  styleUrls: ["./text-highlight.component.scss"],
+  imports: [NgFor, NgIf, NgClass, NgStyle],
   standalone: true,
 })
 export class TextHighlightComponent implements OnChanges {
@@ -23,6 +25,21 @@ export class TextHighlightComponent implements OnChanges {
    * List of keywords to highlight in the text.
    */
   @Input() keywords!: Array<string>;
+
+  /**
+   * Whether the search should be case-sensitive.
+   */
+  @Input() caseSensitive: boolean = false;
+
+  /**
+   * Custom CSS class for highlighted text.
+   */
+  @Input() highlightClass: string = "highlight";
+
+  /**
+   * Inline styles for highlighted text.
+   */
+  @Input() highlightStyle: { [key: string]: string } = {};
 
   /**
    * Array of text segments, each representing a portion of the text
@@ -45,7 +62,7 @@ export class TextHighlightComponent implements OnChanges {
    */
   generateHighlightedSegments(): void {
     this.highlightedSegments = [];
-    if (!this.keywords) {
+    if (!this.keywords || this.keywords.length === 0) {
       this.highlightedSegments = [
         {
           text: this.fullText,
@@ -60,23 +77,17 @@ export class TextHighlightComponent implements OnChanges {
       searchWords: this.keywords,
       textToSearch: this.fullText,
       autoEscape: true,
+      caseSensitive: this.caseSensitive,
     });
 
     // Map chunks to highlighted segments
-    textChunks.map((chunk: any) => {
+    textChunks.forEach((chunk: TextChunk) => {
       const { end, highlight, start } = chunk;
       const segmentText = this.fullText.substring(start, end);
-      if (highlight) {
-        this.highlightedSegments.push({
-          text: segmentText,
-          isHighlighted: true,
-        });
-      } else {
-        this.highlightedSegments.push({
-          text: segmentText,
-          isHighlighted: false,
-        });
-      }
+      this.highlightedSegments.push({
+        text: segmentText,
+        isHighlighted: highlight,
+      });
     });
   }
 }

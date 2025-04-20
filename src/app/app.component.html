@@ -1,19 +1,47 @@
 <h1>{{ title }}</h1>
-<hr>
+<hr />
 
 <div>
-  <label for="textbox">Insert Sample Text:</label><br>
-  <textarea #textVal name="textbox" id="" cols="80" rows="10" [(ngModel)]="sampleText"></textarea><br><br>
+  <label for="textbox">Insert Sample Text:</label><br />
+  <textarea
+    #textVal
+    name="textbox"
+    id=""
+    cols="80"
+    rows="10"
+    [(ngModel)]="sampleText"
+  ></textarea
+  ><br /><br />
 </div>
 
 <div>
   <label for="searchBox">Search Text: </label>
-  <input #searchText name="searchBox" type="text" [(ngModel)]="sampleSearchText" size="50px" value="et dolore magna">
+  <input
+    #searchText
+    name="searchBox"
+    type="text"
+    [(ngModel)]="sampleSearchText"
+    size="50px"
+    value="et dolore magna"
+  />
 </div>
 
-<hr>
+<hr />
 
 <div>
-  <h4>Highlighted Text: </h4>
-  <ng-text-highlight [fullText]="sampleText" [keywords]="sampleSearchText.split(' ')"></ng-text-highlight>
+  <h4>Highlighted Text:</h4>
+  <ng-text-highlight
+    [fullText]="sampleText"
+    [keywords]="sampleSearchText.split(' ')"
+  ></ng-text-highlight>
+</div>
+
+<div>
+  <h4>Custom Inline CSS Highlighted Text:</h4>
+  <ng-text-highlight
+    [fullText]="sampleText"
+    [keywords]="sampleSearchText.split(' ')"
+    [caseSensitive]="true"
+    [highlightStyle]="{ 'background-color': 'lightgreen', 'color': 'black', 'font-weight': 'bold' }"
+  ></ng-text-highlight>
 </div>

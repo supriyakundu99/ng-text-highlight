@@ -98,7 +98,6 @@ const defaultChunkFinder = ({
   textToSearch: string;
 }): Array<TextChunk> => {
   textToSearch = sanitize(textToSearch);
-
   return searchWords
     .filter((searchWord) => searchWord)
     .reduce((chunks: Array<TextChunk>, searchWord) => {
