@@ -1,0 +1,63 @@
+<section id="demo" class="section demo-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Interactive Demo</h2>
+      <p class="section-description">
+        Try it out! Type some keywords below to see them highlighted in the
+        sample text.
+      </p>
+    </div>
+
+    <div class="demo-container">
+      <div class="demo-controls">
+        <div class="input-group">
+          <label for="keywords">Keywords (space-separated):</label>
+          <input
+            type="text"
+            id="keywords"
+            [(ngModel)]="keywordsInput"
+            (ngModelChange)="updateKeywords()"
+            placeholder="Enter keywords to highlight..."
+          />
+        </div>
+
+        <div class="options">
+          <div class="checkbox-group">
+            <input
+              type="checkbox"
+              id="caseSensitive"
+              [(ngModel)]="caseSensitive"
+            />
+            <label for="caseSensitive">Case sensitive</label>
+          </div>
+
+          <div class="select-group">
+            <label for="highlightStyle">Highlight style:</label>
+            <select id="highlightStyle" [(ngModel)]="selectedHighlightClass">
+              <option value="highlight">Default (Yellow)</option>
+              <option value="highlight-green">Green</option>
+              <option value="highlight-blue">Blue</option>
+              <option value="highlight-red">Red</option>
+              <option value="highlight-purple">Purple</option>
+              <option value="highlight-orange">Orange</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-result">
+        <div class="result-header">
+          <h4>Result:</h4>
+        </div>
+        <div class="result-content">
+          <ng-text-highlight
+            [fullText]="sampleText"
+            [keywords]="keywords"
+            [caseSensitive]="caseSensitive"
+            [highlightClass]="selectedHighlightClass"
+          ></ng-text-highlight>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

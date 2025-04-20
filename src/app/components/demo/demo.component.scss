@@ -1,0 +1,113 @@
+.demo-section {
+  margin-top: 10vh;
+  position: relative;
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-5);
+}
+
+.section-description {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+}
+
+.demo-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+
+.demo-controls {
+  padding: var(--space-3);
+  background-color: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.input-group {
+  margin-bottom: var(--space-3);
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  transition: border-color var(--transition-fast) ease;
+}
+
+input[type="text"]:focus {
+  border-color: var(--color-primary-400);
+  outline: none;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.select-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+select {
+  padding: 4px var(--space-1);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+}
+
+.demo-result {
+  padding: var(--space-3);
+}
+
+.result-header {
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.result-content {
+  background-color: var(--color-bg-elevated);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  min-height: 200px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
