@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { CodeExample } from "./usage.model";
 import { NgClass, NgFor, NgIf } from "@angular/common";
+import { HighlightService } from "src/app/services/highlight.service";
 
 @Component({
   selector: "app-usage",
@@ -159,7 +160,20 @@ export class AppComponent {
     },
   ];
 
+  highlighted = false;
+  constructor(private highlightService: HighlightService) {}
+
   setActiveTab(index: number) {
     this.activeTab = index;
+    setTimeout(() => {
+      this.highlightService.highlightAll();
+    });
+  }
+
+  ngAfterViewChecked() {
+    if (!this.highlighted) {
+      this.highlightService.highlightAll();
+      this.highlighted = true;
+    }
   }
 }

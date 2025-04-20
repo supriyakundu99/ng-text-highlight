@@ -51,6 +51,16 @@ export class StylesComponent {
     },
   ];
 
+  customHtml = `<ng-text-highlight
+  [fullText]="sampleText"
+  [keywords]="['Angular', 'highlight']"
+  [highlightStyle]="{ 
+    'background-color': 'lightblue', 
+    'color': 'black', 
+    'font-weight': 'bold' 
+  }"
+></ng-text-highlight>
+  `;
   customStyle = {
     "background-color": "rgba(66, 133, 244, 0.3)",
     color: "white",
