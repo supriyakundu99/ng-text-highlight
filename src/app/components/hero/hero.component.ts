@@ -9,6 +9,13 @@ import { Component } from "@angular/core";
 export class HeroComponent {
   copied = false;
 
+  exampleCode = `<ng-text-highlight
+  [fullText]="text"
+  [keywords]="keywords"
+  [highlightClass]="'highlight-blue'"
+></ng-text-highlight>
+  `;
+
   copyCommand() {
     navigator.clipboard.writeText("npm install ng-text-highlight");
     this.copied = true;

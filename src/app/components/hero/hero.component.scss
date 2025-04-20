@@ -86,7 +86,7 @@
 
 .copy-btn {
   position: absolute;
-  top: 34px;
+  top: var(--space-1);
   right: var(--space-1);
   padding: 4px var(--space-1);
   font-size: var(--font-size-sm);

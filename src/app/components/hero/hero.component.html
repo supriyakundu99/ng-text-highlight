@@ -19,7 +19,7 @@
       </div>
       <div class="install-command slide-up">
         <div class="command-label">Installation</div>
-        <pre><code>npm install ng-text-highlight</code></pre>
+        <pre><code>&gt; npm install ng-text-highlight</code></pre>
         <button class="copy-btn" (click)="copyCommand()">
           {{ copied ? "Copied!" : "Copy" }}
         </button>
@@ -28,11 +28,7 @@
     <div class="hero-image slide-up">
       <div class="glow"></div>
       <div class="code-preview">
-        <pre><code>&lt;ng-text-highlight
-    [fullText]="text"
-    [keywords]="keywords"
-    [highlightClass]="'highlight-blue'"
-  &gt;&lt;/ng-text-highlight&gt;</code></pre>
+        <pre><code class="language-html">{{exampleCode}}</code></pre>
       </div>
     </div>
   </div>
