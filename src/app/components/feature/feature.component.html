@@ -1,0 +1,42 @@
+<section id="features" class="section features-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Features</h2>
+      <p class="section-description">
+        Everything you need to highlight text in your Angular applications.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div *ngFor="let feature of features" class="feature-card card">
+        <div class="feature-icon" [innerHTML]="feature.icon"></div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+    </div>
+
+    <div class="inputs-table">
+      <h3>Available Inputs</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Input</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let input of inputs">
+            <td>
+              <code>{{ input.name }}</code>
+            </td>
+            <td>
+              <code>{{ input.type }}</code>
+            </td>
+            <td>{{ input.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+<section id="styles" class="section styles-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Prebuilt Styles</h2>
+      <p class="section-description">
+        Choose from a variety of prebuilt styles to quickly customize your text
+        highlights.
+      </p>
+    </div>
+
+    <div class="styles-grid">
+      <div *ngFor="let style of styles" class="style-card card">
+        <h3>{{ style.name }}</h3>
+        <p class="style-class">
+          Class: <code>{{ style.class }}</code>
+        </p>
+        <p class="style-description">{{ style.description }}</p>
+        <div class="style-preview">
+          <ng-text-highlight
+            [fullText]="sampleText"
+            [keywords]="['Angular', 'highlight', 'style']"
+            [highlightClass]="style.class"
+          ></ng-text-highlight>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-styles">
+      <h3>Custom Inline Styles</h3>
+      <p>
+        You can also apply custom inline styles using the
+        <code>highlightStyle</code> input property:
+      </p>
+      <pre><code>&lt;ng-text-highlight
+    [fullText]="sampleText"
+    [keywords]="['Angular', 'highlight']"
+    [highlightStyle]="&#123; 
+      'background-color': 'lightblue', 
+      'color': 'black', 
+      'font-weight': 'bold' 
+    &#125;"
+  &gt;&lt;/ng-text-highlight&gt;</code></pre>
+
+      <div class="custom-style-preview">
+        <h4>Result:</h4>
+        <div class="preview-box">
+          <ng-text-highlight
+            [fullText]="sampleText"
+            [keywords]="['Angular', 'highlight', 'style']"
+            [highlightStyle]="customStyle"
+          ></ng-text-highlight>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

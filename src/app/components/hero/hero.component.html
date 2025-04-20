@@ -1,0 +1,40 @@
+<section class="hero">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="badge">Angular 19+ Compatible</div>
+      <h1 class="slide-up">Highlight Text in Angular</h1>
+      <p class="hero-description slide-up">
+        A lightweight Angular standalone component to highlight search keywords
+        within a block of text. Easy to integrate, highly customizable, and
+        performant.
+      </p>
+      <div class="hero-buttons slide-up">
+        <a href="#demo" class="btn btn-primary">Try Demo</a>
+        <a
+          href="https://ng-text-highlight.web.app/"
+          target="_blank"
+          class="btn btn-secondary"
+          >Visit Homepage</a
+        >
+      </div>
+      <div class="install-command slide-up">
+        <div class="command-label">Installation</div>
+        <pre><code>npm install ng-text-highlight</code></pre>
+        <button class="copy-btn" (click)="copyCommand()">
+          {{ copied ? "Copied!" : "Copy" }}
+        </button>
+      </div>
+    </div>
+    <div class="hero-image slide-up">
+      <div class="glow"></div>
+      <div class="code-preview">
+        <pre><code>&lt;ng-text-highlight
+    [fullText]="text"
+    [keywords]="keywords"
+    [highlightClass]="'highlight-blue'"
+  &gt;&lt;/ng-text-highlight&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+  <div class="hero-gradient"></div>
+</section>

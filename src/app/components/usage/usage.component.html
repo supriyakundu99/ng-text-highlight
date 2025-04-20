@@ -1,0 +1,47 @@
+<section id="usage" class="section usage-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Usage Examples</h2>
+      <p class="section-description">
+        Integrate ng-text-highlight into your Angular projects with these simple
+        examples.
+      </p>
+    </div>
+
+    <div class="installation">
+      <h3>Installation</h3>
+      <pre><code>npm install ng-text-highlight</code></pre>
+    </div>
+
+    <div class="usage-tabs">
+      <div class="tabs">
+        <button
+          *ngFor="let tab of tabs; let i = index"
+          [ngClass]="{ active: activeTab === i }"
+          (click)="setActiveTab(i)"
+          class="tab-button"
+        >
+          {{ tab }}
+        </button>
+      </div>
+
+      <div class="tab-content">
+        <div *ngIf="activeTab === 0" class="tab-pane">
+          <div class="code-example" *ngFor="let example of standaloneExamples">
+            <h4>{{ example.title }}</h4>
+            <p>{{ example.description }}</p>
+            <pre><code>{{ example.code }}</code></pre>
+          </div>
+        </div>
+
+        <div *ngIf="activeTab === 1" class="tab-pane">
+          <div class="code-example" *ngFor="let example of moduleExamples">
+            <h4>{{ example.title }}</h4>
+            <p>{{ example.description }}</p>
+            <pre><code>{{ example.code }}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

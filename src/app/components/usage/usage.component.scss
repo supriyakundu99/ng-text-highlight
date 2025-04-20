@@ -1,0 +1,109 @@
+.usage-section {
+  background-color: var(--color-bg-secondary);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-5);
+}
+
+.section-description {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+}
+
+.installation {
+  margin-bottom: var(--space-4);
+}
+
+.installation h3 {
+  margin-bottom: var(--space-2);
+}
+
+.usage-tabs {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.tabs {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab-button {
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast) ease;
+}
+
+.tab-button:hover {
+  color: var(--color-text-primary);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab-button.active {
+  color: var(--color-primary-300);
+  border-bottom: 2px solid var(--color-primary-300);
+  font-weight: 500;
+}
+
+.tab-content {
+  padding: var(--space-3);
+}
+
+.code-example {
+  margin-bottom: var(--space-4);
+}
+
+.code-example:last-child {
+  margin-bottom: 0;
+}
+
+.code-example h4 {
+  margin-bottom: var(--space-1);
+}
+
+.code-example p {
+  margin-bottom: var(--space-2);
+  color: var(--color-text-secondary);
+}
+
+pre {
+  background-color: var(--color-bg-elevated);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  position: relative;
+}
+
+code {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    width: 100%;
+    text-align: left;
+  }
+
+  .tab-button.active {
+    border-bottom: none;
+    border-left: 2px solid var(--color-primary-300);
+  }
+}

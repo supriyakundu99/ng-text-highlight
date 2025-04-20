@@ -1,5 +1,11 @@
-.custom-highlight {
-  background-color: lightblue;
-  color: black;
-  font-style: italic;
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+main {
+  flex: 1;
 }
