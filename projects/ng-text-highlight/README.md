@@ -95,7 +95,7 @@ export class AppModule {}
 
 ## 📄 License
 
-This package is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+This package is licensed under the MIT License. See the [LICENSE](./projects/ng-text-highlight/LICENSE) file for details.
 
 ---
 
