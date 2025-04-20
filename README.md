@@ -2,6 +2,8 @@
 
 🔍 A lightweight Angular standalone component to highlight search keywords within a block of text.
 
+🌐 **Homepage**: [https://ng-text-highlight.web.app/](https://ng-text-highlight.web.app/)
+
 ---
 
 ## 📦 Installation
