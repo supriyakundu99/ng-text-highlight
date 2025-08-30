@@ -53,29 +53,37 @@ export class FeatureComponent {
       name: "fullText",
       type: "string",
       description: "The main text where keywords will be highlighted",
+      required: true,
     },
     {
       name: "keywords",
       type: "string[]",
       description: "List of keywords to highlight",
+      required: true,
     },
     {
       name: "caseSensitive",
       type: "boolean",
       description:
         "Whether the search should be case-sensitive (default: false)",
+      required: false,
+      default: false,
     },
     {
       name: "highlightClass",
       type: "string",
       description:
         "Custom CSS class for highlighted text (default: 'highlight')",
+      required: false,
+      default: "highlight",
     },
     {
       name: "highlightStyle",
       type: "{ [key: string]: string }",
       description:
         "Inline styles for highlighted text (e.g., { 'background-color': 'yellow' })",
+      required: false,
+      default: {},
     },
   ];
 }

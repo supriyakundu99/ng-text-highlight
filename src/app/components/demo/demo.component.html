@@ -1,53 +1,90 @@
 <section id="demo" class="section demo-section">
   <div class="container">
-    <div class="section-header">
-      <h2>Interactive Demo</h2>
+    <div class="section-header animate-fade-in-up">
+      <div class="section-badge">
+        <span class="badge-icon">🎮</span>
+        Interactive Demo
+      </div>
+      <h2>Try it Live</h2>
       <p class="section-description">
-        Try it out! Type some keywords below to see them highlighted in the
-        sample text.
+        Experience the power of ng-text-highlight. Type keywords below and watch them get highlighted in real-time with customizable styles.
       </p>
     </div>
 
-    <div class="demo-container">
-      <div class="demo-controls">
+    <div class="demo-container animate-fade-in-up">
+      <div class="demo-controls glass">
+        <div class="controls-header">
+          <h3>Configuration</h3>
+          <div class="controls-indicator"></div>
+        </div>
+        
         <div class="input-group">
-          <label for="keywords">Keywords (space-separated):</label>
+          <label for="keywords">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+            Keywords
+          </label>
           <input
             type="text"
             id="keywords"
             [(ngModel)]="keywordsInput"
             (ngModelChange)="updateKeywords()"
             placeholder="Enter keywords to highlight..."
+            class="modern-input"
           />
+          <div class="input-hint">Separate multiple keywords with spaces</div>
         </div>
 
-        <div class="options">
-          <div class="checkbox-group">
-            <input
-              type="checkbox"
-              id="caseSensitive"
-              [(ngModel)]="caseSensitive"
-            />
-            <label for="caseSensitive">Case sensitive</label>
+        <div class="options-grid">
+          <div class="option-card">
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="caseSensitive"
+                [(ngModel)]="caseSensitive"
+                class="modern-checkbox"
+              />
+              <label for="caseSensitive" class="checkbox-label">
+                <span class="checkbox-text">Case Sensitive</span>
+                <span class="checkbox-desc">Match exact letter case</span>
+              </label>
+            </div>
           </div>
 
-          <div class="select-group">
-            <label for="highlightStyle">Highlight style:</label>
-            <select id="highlightStyle" [(ngModel)]="selectedHighlightClass">
-              <option value="highlight">Default (Yellow)</option>
-              <option value="highlight-green">Green</option>
-              <option value="highlight-blue">Blue</option>
-              <option value="highlight-red">Red</option>
-              <option value="highlight-purple">Purple</option>
-              <option value="highlight-orange">Orange</option>
-            </select>
+          <div class="option-card">
+            <div class="select-group">
+              <label for="highlightStyle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                Highlight Style
+              </label>
+              <select id="highlightStyle" [(ngModel)]="selectedHighlightClass" class="modern-select">
+                <option value="highlight">Default (Yellow)</option>
+                <option value="highlight-green">Green</option>
+                <option value="highlight-blue">Blue</option>
+                <option value="highlight-red">Red</option>
+                <option value="highlight-purple">Purple</option>
+                <option value="highlight-orange">Orange</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="demo-result">
+      <div class="demo-result glass">
         <div class="result-header">
-          <h4>Result:</h4>
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+            </svg>
+            Live Preview
+          </h4>
+          <div class="result-stats">
+            <span class="stat-item">{{keywords.length}} keywords</span>
+          </div>
         </div>
         <div class="result-content">
           <ng-text-highlight
@@ -56,6 +93,21 @@
             [caseSensitive]="caseSensitive"
             [highlightClass]="selectedHighlightClass"
           ></ng-text-highlight>
+        </div>
+        <div class="result-footer">
+          <div class="code-snippet">
+            <div class="snippet-header">
+              <span>Component Usage</span>
+              <button class="copy-code-btn" (click)="copyCode()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                  <path d="m4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                </svg>
+                {{codeCopied ? 'Copied!' : 'Copy'}}
+              </button>
+            </div>
+            <pre><code>{{getCurrentCode()}}</code></pre>
+          </div>
         </div>
       </div>
     </div>
