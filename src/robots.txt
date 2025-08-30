@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ng-text-highlight.web.app/sitemap.xml
