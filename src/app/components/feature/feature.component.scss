@@ -1,5 +1,5 @@
 .features-section {
-  padding: 6rem 0;
+  padding: var(--space-3xl) 0;
   background: var(--bg-secondary);
   position: relative;
 }
@@ -16,38 +16,34 @@
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: var(--space-3xl);
 }
 
 .section-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-sm);
   background: rgba(139, 92, 246, 0.1);
   border: 1px solid rgba(139, 92, 246, 0.3);
   color: var(--accent-secondary);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.875rem;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--space-xl);
+  font-size: var(--text-sm);
   font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.badge-icon {
-  font-size: 1rem;
+  margin-bottom: var(--space-md);
 }
 
 .section-header h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-md);
+  background: var(--gradient-secondary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .section-description {
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
@@ -57,8 +53,8 @@
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-bottom: 6rem;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
 }
 
 .feature-card {
@@ -66,7 +62,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
-  padding: 2rem;
+  padding: var(--space-xl);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -99,21 +95,21 @@
   position: relative;
   width: 60px;
   height: 60px;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-lg);
 }
 
 .feature-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-secondary);
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: var(--text-xl);
   position: relative;
   z-index: 2;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal) ease;
 }
 
 .icon-glow {
@@ -122,11 +118,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+  background: var(--gradient-secondary);
   border-radius: var(--radius-lg);
   filter: blur(20px);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-normal) ease;
 }
 
 .feature-card:hover .icon-glow {
@@ -138,10 +134,10 @@
 }
 
 .feature-content h3 {
-  font-size: 1.5rem;
+  font-size: var(--text-xl);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-md);
 }
 
 .feature-content p {
@@ -152,12 +148,12 @@
 
 .feature-arrow {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  top: var(--space-xl);
+  right: var(--space-xl);
   color: var(--text-muted);
   opacity: 0;
   transform: translateX(-10px);
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal) ease;
 }
 
 .feature-card:hover .feature-arrow {
@@ -167,26 +163,26 @@
 }
 
 .api-section {
-  margin-top: 4rem;
+  margin-top: var(--space-3xl);
 }
 
 .api-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-2xl);
 }
 
 .api-header h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  gap: var(--space-md);
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-md);
   color: var(--text-primary);
 }
 
 .api-header p {
-  font-size: 1.125rem;
+  font-size: var(--text-lg);
   color: var(--text-secondary);
   max-width: 500px;
   margin: 0 auto;
@@ -204,14 +200,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: var(--space-xl);
   background: rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .table-header h4 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
   color: var(--text-primary);
 }
 
@@ -219,9 +215,9 @@
   background: rgba(139, 92, 246, 0.1);
   border: 1px solid rgba(139, 92, 246, 0.3);
   color: var(--accent-secondary);
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  font-size: 0.875rem;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--space-md);
+  font-size: var(--text-sm);
   font-weight: 600;
 }
 
@@ -236,11 +232,11 @@
 
 .modern-table th {
   background: rgba(255, 255, 255, 0.03);
-  padding: 1.5rem 2rem;
+  padding: var(--space-lg) var(--space-xl);
   text-align: left;
   font-weight: 600;
   color: var(--text-primary);
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -248,7 +244,7 @@
 
 .table-row {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal) ease;
   animation: fadeInUp 0.6s ease-out both;
 }
 
@@ -257,23 +253,23 @@
 }
 
 .modern-table td {
-  padding: 1.5rem 2rem;
+  padding: var(--space-lg) var(--space-xl);
   vertical-align: top;
 }
 
 .property-cell {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-sm);
 }
 
 .property-name {
   background: rgba(139, 92, 246, 0.1);
   color: var(--accent-secondary);
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   font-weight: 600;
 }
 
@@ -285,10 +281,10 @@
 .type-badge {
   background: rgba(16, 185, 129, 0.1);
   color: var(--accent-success);
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   font-weight: 500;
 }
 
@@ -301,10 +297,10 @@
 .default-value {
   background: rgba(245, 158, 11, 0.1);
   color: var(--accent-warning);
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
 }
 
 .no-default {
@@ -312,7 +308,6 @@
   font-style: italic;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .features-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -321,48 +316,33 @@
 
 @media (max-width: 768px) {
   .features-section {
-    padding: 4rem 0;
+    padding: var(--space-3xl) 0;
   }
   
   .section-header h2 {
-    font-size: 2.5rem;
+    font-size: var(--text-3xl);
   }
   
   .features-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-3xl);
   }
   
   .feature-card {
-    padding: 1.5rem;
+    padding: var(--space-lg);
   }
   
   .table-header {
-    padding: 1.5rem;
+    padding: var(--space-lg);
   }
   
   .modern-table th,
   .modern-table td {
-    padding: 1rem 1.5rem;
+    padding: var(--space-md) var(--space-lg);
   }
   
   .api-header h3 {
-    font-size: 1.75rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .table-container {
-    font-size: 0.875rem;
-  }
-  
-  .modern-table th,
-  .modern-table td {
-    padding: 0.75rem 1rem;
-  }
-  
-  .description-cell {
-    max-width: 200px;
+    font-size: var(--text-2xl);
   }
 }
