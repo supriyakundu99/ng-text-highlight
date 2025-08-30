@@ -70,13 +70,13 @@
   gap: var(--space-sm);
   background: rgba(99, 102, 241, 0.1);
   border: 1px solid rgba(99, 102, 241, 0.3);
-  color: var(--accent-primary);
+  color: #ffffff;
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--space-xl);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: var(--space-xl);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
 }
 
 .badge-icon {
@@ -138,7 +138,7 @@
 
 .install-command {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
@@ -154,7 +154,7 @@
 
 .command-label {
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -166,7 +166,7 @@
   gap: var(--space-sm);
   background: rgba(99, 102, 241, 0.1);
   border: 1px solid rgba(99, 102, 241, 0.3);
-  color: var(--accent-primary);
+  color: #ffffff;
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
   font-size: var(--text-sm);
@@ -186,7 +186,7 @@
   padding: var(--space-md);
   margin: 0;
   font-family: 'JetBrains Mono', monospace;
-  color: var(--accent-primary);
+  color: #ffffff;
 }
 
 .hero-visual {
@@ -195,7 +195,7 @@
 
 .code-window {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -253,7 +253,7 @@
 
 .feature-card {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
   padding: var(--space-md);
@@ -275,7 +275,7 @@
 
 .feature-text {
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-secondary);
 }
 
@@ -335,5 +335,31 @@
   .hero-buttons {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+.badge-text {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff, #e0e7ff, #c7d2fe, #a5b4fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.typing-cursor {
+  background: linear-gradient(135deg, #ffffff, #a5b4fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
   }
 }
