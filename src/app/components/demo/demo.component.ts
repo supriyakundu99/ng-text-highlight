@@ -15,6 +15,7 @@ export class DemoComponent {
   keywords: string[] = [];
   caseSensitive = false;
   selectedHighlightClass = "highlight";
+  codeCopied = false;
 
   ngOnInit() {
     this.updateKeywords();
@@ -24,5 +25,28 @@ export class DemoComponent {
     this.keywords = this.keywordsInput
       .split(" ")
       .filter((keyword) => keyword.trim() !== "");
+  }
+
+  getCurrentCode(): string {
+    const keywordsArray = this.keywords.length > 0 
+      ? `['${this.keywords.join("', '")}']` 
+      : '[]';
+    
+    return `<ng-text-highlight
+  [fullText]="sampleText"
+  [keywords]="${keywordsArray}"
+  [caseSensitive]="${this.caseSensitive}"
+  [highlightClass]="'${this.selectedHighlightClass}'"
+></ng-text-highlight>`;
+  }
+
+  copyCode() {
+    const code = this.getCurrentCode();
+    navigator.clipboard.writeText(code).then(() => {
+      this.codeCopied = true;
+      setTimeout(() => {
+        this.codeCopied = false;
+      }, 2000);
+    });
   }
 }
