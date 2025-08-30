@@ -93,14 +93,12 @@
 
 .feature-icon-wrapper {
   position: relative;
-  width: 60px;
-  height: 60px;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .feature-icon {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   background: var(--gradient-secondary);
   border-radius: var(--radius-lg);
   display: flex;
