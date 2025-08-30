@@ -1,7 +1,7 @@
 # ng-text-highlight
 
 <div align="center">
-  <img src="https://github.com/supriyakundu99/ng-text-highlight/blob/main/src/icon.svg" alt="ng-text-highlight logo" width="200">
+  <img src="https://github.com/supriyakundu99/ng-text-highlight/blob/main/src/assets/icon.svg" alt="ng-text-highlight logo" width="200">
 </div>
 
 🔍 A lightweight Angular standalone component to highlight search keywords within a block of text.

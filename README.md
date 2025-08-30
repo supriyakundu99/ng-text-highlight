@@ -1,12 +1,35 @@
 # ng-text-highlight
 
 <div align="center">
-  <img src="https://github.com/supriyakundu99/ng-text-highlight/blob/main/src/icon.svg" alt="ng-text-highlight logo" width="200">
+  <img src="https://github.com/supriyakundu99/ng-text-highlight/blob/main/src/assets/icon.svg" alt="ng-text-highlight logo" width="200">
 </div>
 
 🔍 A lightweight Angular standalone component to highlight search keywords within a block of text.
 
 🌐 **Homepage**: [https://ng-text-highlight.web.app/](https://ng-text-highlight.web.app/)
+
+[![npm version](https://badge.fury.io/js/ng-text-highlight.svg)](https://www.npmjs.com/package/ng-text-highlight)
+[![Downloads](https://img.shields.io/npm/dm/ng-text-highlight.svg)](https://www.npmjs.com/package/ng-text-highlight)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## 🚀 Why Choose ng-text-highlight?
+
+- **🎯 Perfect for Search Results**: Highlight search terms in search results, documentation, and content
+- **⚡ Lightweight & Fast**: Minimal bundle size with optimal performance
+- **🎨 Fully Customizable**: Custom CSS classes, inline styles, and prebuilt themes
+- **🔧 Easy Integration**: Works with Angular 14+ as standalone component or module
+- **📱 Mobile Friendly**: Responsive design that works on all devices
+- **🔍 Smart Search**: Case-sensitive/insensitive search with multiple keyword support
+- **♿ Accessible**: Built with accessibility best practices
+
+## 🎯 Use Cases
+
+- **Search Results**: Highlight search terms in search result pages
+- **Documentation**: Highlight keywords in help articles and documentation
+- **Content Filtering**: Visual feedback for filtered content
+- **Code Editors**: Syntax highlighting and keyword emphasis
+- **E-commerce**: Highlight product features and specifications
+- **Educational Apps**: Emphasize important terms in learning materials
 
 ---
 

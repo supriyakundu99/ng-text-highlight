@@ -6,13 +6,15 @@
   <rect x="60" y="200" width="380" height="100" rx="15" ry="15" fill="#FFEB3B" stroke="#FFC107" stroke-width="4"/>
 
   <!-- 'ng' Text -->
-  <text x="85" y="265" font-family="Segoe UI, sans-serif" font-size="84" font-weight="bold" fill="#212121">ng</text>
+  <text x="85" y="265" font-family="Arial, sans-serif" font-size="84" font-weight="bold" fill="#212121">ng</text>
 
   <!-- Magnifying Glass -->
   <circle cx="380" cy="250" r="60" stroke="#333" stroke-width="16" fill="none"/>
   <line x1="420" y1="290" x2="475" y2="345" stroke="#333" stroke-width="16" stroke-linecap="round"/>
 
-  <!-- Angular logo style A (minimal) -->
-  <polygon points="256,80 160,160 190,320 256,380 322,320 352,160" fill="#DD0031"/>
-  <text x="212" y="290" font-family="Segoe UI, sans-serif" font-size="60" font-weight="bold" fill="#ffffff">A</text>
+  <!-- Angular logo shield (moved lower) -->
+  <polygon points="256,120 180,180 200,340 256,400 312,340 332,180" fill="#DD0031"/>
+  
+  <!-- Angular A (moved lower with shield) -->
+  <text x="256" y="290" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#ffffff" text-anchor="middle">A</text>
 </svg>
