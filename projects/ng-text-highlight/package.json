@@ -1,6 +1,6 @@
 {
   "name": "ng-text-highlight",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A lightweight standalone Angular 19 component/module for highlighting text.",
   "author": "Supriya Kundu",
   "license": "MIT",
