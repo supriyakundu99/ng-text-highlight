@@ -1,46 +1,128 @@
 <section id="styles" class="section styles-section">
   <div class="container">
-    <div class="section-header">
-      <h2>Prebuilt Styles</h2>
+    <div class="section-header animate-fade-in-up">
+      <div class="section-badge">
+        <span class="badge-icon">🎨</span>
+        Styling Options
+      </div>
+      <h2>Beautiful Highlights</h2>
       <p class="section-description">
-        Choose from a variety of prebuilt styles to quickly customize your text
-        highlights.
+        Choose from our carefully crafted prebuilt styles or create your own custom highlights with inline styles and CSS classes.
       </p>
     </div>
 
-    <div class="styles-grid">
-      <div *ngFor="let style of styles" class="style-card card">
-        <h3>{{ style.name }}</h3>
-        <p class="style-class">
-          Class: <code>{{ style.class }}</code>
-        </p>
-        <p class="style-description">{{ style.description }}</p>
-        <div class="style-preview">
-          <ng-text-highlight
-            [fullText]="sampleText"
-            [keywords]="['Angular', 'highlight', 'style']"
-            [highlightClass]="style.class"
-          ></ng-text-highlight>
+    <div class="styles-showcase animate-fade-in-up">
+      <div class="showcase-header">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Prebuilt Styles
+        </h3>
+        <p>Ready-to-use highlight styles for instant visual appeal</p>
+      </div>
+
+      <div class="styles-grid">
+        <div *ngFor="let style of styles; let i = index" 
+             class="style-card glass"
+             [style.animation-delay.s]="i * 0.1">
+          <div class="style-header">
+            <div class="style-info">
+              <h4>{{ style.name }}</h4>
+              <div class="style-meta">
+                <code class="style-class">{{ style.class }}</code>
+                <button class="copy-class-btn" (click)="copyStyleClass(style.class)">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                    <path d="m4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                  </svg>
+                  {{ getStyleCopyText(i) }}
+                </button>
+              </div>
+            </div>
+            <div class="style-color" [style.background]="getStyleColor(style.class)"></div>
+          </div>
+          
+          <p class="style-description">{{ style.description }}</p>
+          
+          <div class="style-preview">
+            <div class="preview-label">Live Preview</div>
+            <div class="preview-content">
+              <ng-text-highlight
+                [fullText]="sampleText"
+                [keywords]="['Angular', 'highlight', 'style']"
+                [highlightClass]="style.class"
+              ></ng-text-highlight>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="custom-styles">
-      <h3>Custom Inline Styles</h3>
-      <p>
-        You can also apply custom inline styles using the
-        <code>highlightStyle</code> input property:
-      </p>
-      <pre><code class="language-html">{{customHtml}}</code></pre>
+    <div class="custom-styles-section glass animate-fade-in-up">
+      <div class="custom-header">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            <path d="M5 12h14"/>
+            <path d="M12 5v14"/>
+          </svg>
+          Custom Inline Styles
+        </h3>
+        <p>Create unique highlights with custom CSS properties</p>
+      </div>
 
-      <div class="custom-style-preview">
-        <h4>Result:</h4>
-        <div class="preview-box">
-          <ng-text-highlight
-            [fullText]="sampleText"
-            [keywords]="['Angular', 'highlight', 'style']"
-            [highlightStyle]="customStyle"
-          ></ng-text-highlight>
+      <div class="custom-content">
+        <div class="code-section">
+          <div class="code-header">
+            <span>Example Usage</span>
+            <button class="copy-code-btn" (click)="copyCustomCode()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                <path d="m4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+              </svg>
+              {{ customCodeCopied ? 'Copied!' : 'Copy' }}
+            </button>
+          </div>
+          <pre><code class="language-html">{{ customHtml }}</code></pre>
+        </div>
+
+        <div class="custom-preview">
+          <div class="preview-header">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+              </svg>
+              Live Result
+            </h4>
+          </div>
+          <div class="preview-box">
+            <ng-text-highlight
+              [fullText]="sampleText"
+              [keywords]="['Angular', 'highlight', 'style']"
+              [highlightStyle]="customStyle"
+            ></ng-text-highlight>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="styling-tips glass animate-fade-in-up">
+      <div class="tips-header">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+          Styling Tips
+        </h3>
+      </div>
+      <div class="tips-grid">
+        <div *ngFor="let tip of stylingTips" class="tip-item">
+          <div class="tip-icon">{{ tip.icon }}</div>
+          <div class="tip-content">
+            <h4>{{ tip.title }}</h4>
+            <p>{{ tip.description }}</p>
+          </div>
         </div>
       </div>
     </div>

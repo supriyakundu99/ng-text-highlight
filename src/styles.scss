@@ -116,15 +116,6 @@ code {
   color: var(--accent-primary);
 }
 
-pre {
-  background: var(--bg-card);
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
-  overflow-x: auto;
-  border: 1px solid var(--bg-hover);
-  box-shadow: var(--shadow-md);
-}
-
 /* Buttons */
 .btn {
   display: inline-flex;

@@ -67,7 +67,7 @@ export class FeatureComponent {
       description:
         "Whether the search should be case-sensitive (default: false)",
       required: false,
-      default: false,
+      default: "false",
     },
     {
       name: "highlightClass",
@@ -83,7 +83,7 @@ export class FeatureComponent {
       description:
         "Inline styles for highlighted text (e.g., { 'background-color': 'yellow' })",
       required: false,
-      default: {},
+      default: "null",
     },
   ];
 }

@@ -12,12 +12,36 @@ import { HighlightService } from "src/app/services/highlight.service";
 export class UsageComponent implements AfterViewChecked {
   tabs = ["Standalone Component", "Module Import"];
   activeTab = 0;
+  installCopied = false;
+  exampleCopiedStates: boolean[] = [];
+
+  bestPractices = [
+    {
+      icon: '⚡',
+      title: 'Performance',
+      description: 'Use OnPush change detection strategy for better performance with large datasets.'
+    },
+    {
+      icon: '🎨',
+      title: 'Styling',
+      description: 'Prefer CSS classes over inline styles for consistent theming across your app.'
+    },
+    {
+      icon: '🔍',
+      title: 'Search UX',
+      description: 'Debounce search input to avoid excessive highlighting updates while typing.'
+    },
+    {
+      icon: '♿',
+      title: 'Accessibility',
+      description: 'Ensure sufficient color contrast for highlighted text to meet WCAG guidelines.'
+    }
+  ];
 
   standaloneExamples: CodeExample[] = [
     {
       title: "Import in Component",
-      description:
-        "Import TextHighlightComponent in your standalone component:",
+      description: "Import TextHighlightComponent in your standalone component:",
       code: `import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TextHighlightComponent } from 'ng-text-highlight';
@@ -161,13 +185,39 @@ export class AppComponent {
   ];
 
   highlighted = false;
-  constructor(private highlightService: HighlightService) {}
+  
+  constructor(private highlightService: HighlightService) {
+    this.exampleCopiedStates = new Array(this.standaloneExamples.length + this.moduleExamples.length).fill(false);
+  }
 
   setActiveTab(index: number) {
     this.activeTab = index;
     setTimeout(() => {
       this.highlightService.highlightAll();
     });
+  }
+
+  getTabIcon(index: number): string {
+    return index === 0 ? '🚀' : '📦';
+  }
+
+  copyInstallCommand() {
+    navigator.clipboard.writeText('npm install ng-text-highlight').then(() => {
+      this.installCopied = true;
+      setTimeout(() => {
+        this.installCopied = false;
+      }, 2000);
+    });
+  }
+
+  copyExample(code: string) {
+    navigator.clipboard.writeText(code).then(() => {
+      // Handle copy feedback in getExampleCopyText method
+    });
+  }
+
+  getExampleCopyText(index: number): string {
+    return this.exampleCopiedStates[index] ? 'Copied!' : 'Copy';
   }
 
   ngAfterViewChecked() {
