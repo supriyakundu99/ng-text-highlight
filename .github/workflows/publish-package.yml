@@ -75,7 +75,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: echo "Running unit tests..."
+        run: npm run test:lib:ci
 
   npm-publish:
     name: Publish to npm
