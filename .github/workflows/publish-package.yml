@@ -92,15 +92,19 @@ jobs:
           name: ng-text-highlight-dist
           path: dist/ng-text-highlight/
 
-      # Auth: npm Trusted Publishing (preferred) OR granular token in NPM_AUTH_TOKEN.
-      # Classic npm tokens were revoked Dec 2025 — they no longer work in CI.
-      - name: Set up Node.js for npm
+      # Uses npm Trusted Publishing (OIDC). Do NOT set NODE_AUTH_TOKEN on this step —
+      # an invalid NPM_AUTH_TOKEN secret overrides OIDC and causes 404 on publish.
+      # Configure: https://www.npmjs.com/package/ng-text-highlight/access → Trusted publishers
+      - name: Set up Node.js for npm (OIDC)
         uses: actions/setup-node@v4
         with:
           node-version: "22.14.0"
           registry-url: "https://registry.npmjs.org"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Verify npm authentication
+        run: |
+          npm whoami
+          echo "Authenticated to npm as $(npm whoami)"
 
       - name: Publish Library to npm
         working-directory: dist/ng-text-highlight
@@ -113,7 +117,7 @@ jobs:
           if npm view "$PKG_NAME@$PKG_VERSION" > /dev/null 2>&1; then
             echo "::warning ::Version $PKG_VERSION of $PKG_NAME already exists. Skipping publish."
           else
-            npm publish --access public
+            npm publish --access public --provenance
           fi
 
   github-publish:
