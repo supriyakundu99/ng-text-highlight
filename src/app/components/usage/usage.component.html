@@ -33,73 +33,82 @@
     <div class="usage-tabs animate-fade-in-up">
       <div class="tabs-header">
         <div class="tabs">
-          <button
-            *ngFor="let tab of tabs; let i = index"
-            [ngClass]="{ active: activeTab === i }"
-            (click)="setActiveTab(i)"
-            class="tab-button"
-          >
-            <span class="tab-icon" [innerHTML]="getTabIcon(i)"></span>
-            {{ tab }}
-          </button>
+          @for (tab of tabs; track tab; let i = $index) {
+            <button
+              [ngClass]="{ active: activeTab === i }"
+              (click)="setActiveTab(i)"
+              class="tab-button"
+              >
+              <span class="tab-icon" [innerHTML]="getTabIcon(i)"></span>
+              {{ tab }}
+            </button>
+          }
         </div>
         <div class="tab-indicator" [style.transform]="'translateX(' + (activeTab * 100) + '%)'"></div>
       </div>
 
       <div class="tab-content">
-        <div *ngIf="activeTab === 0" class="tab-pane animate-fade-in-up">
-          <div class="examples-grid">
-            <div *ngFor="let example of standaloneExamples; let i = index" 
-                 class="code-example glass"
-                 [style.animation-delay.s]="i * 0.1">
-              <div class="example-header">
-                <div class="example-info">
-                  <h4>{{ example.title }}</h4>
-                  <p>{{ example.description }}</p>
+        @if (activeTab === 0) {
+          <div class="tab-pane animate-fade-in-up">
+            <div class="examples-grid">
+              @for (example of standaloneExamples; track example; let i = $index) {
+                <div
+                  class="code-example glass"
+                  [style.animation-delay.s]="i * 0.1">
+                  <div class="example-header">
+                    <div class="example-info">
+                      <h4>{{ example.title }}</h4>
+                      <p>{{ example.description }}</p>
+                    </div>
+                    <div class="example-actions">
+                      <button class="copy-example-btn" (click)="copyExample(example.code)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                          <path d="m4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                        </svg>
+                        {{ getExampleCopyText(i) }}
+                      </button>
+                    </div>
+                  </div>
+                  <div class="code-container">
+                    <pre><code class="language-ts">{{ example.code }}</code></pre>
+                  </div>
                 </div>
-                <div class="example-actions">
-                  <button class="copy-example-btn" (click)="copyExample(example.code)">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                      <path d="m4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-                    </svg>
-                    {{ getExampleCopyText(i) }}
-                  </button>
-                </div>
-              </div>
-              <div class="code-container">
-                <pre><code class="language-ts">{{ example.code }}</code></pre>
-              </div>
+              }
             </div>
           </div>
-        </div>
+        }
 
-        <div *ngIf="activeTab === 1" class="tab-pane animate-fade-in-up">
-          <div class="examples-grid">
-            <div *ngFor="let example of moduleExamples; let i = index" 
-                 class="code-example glass"
-                 [style.animation-delay.s]="i * 0.1">
-              <div class="example-header">
-                <div class="example-info">
-                  <h4>{{ example.title }}</h4>
-                  <p>{{ example.description }}</p>
+        @if (activeTab === 1) {
+          <div class="tab-pane animate-fade-in-up">
+            <div class="examples-grid">
+              @for (example of moduleExamples; track example; let i = $index) {
+                <div
+                  class="code-example glass"
+                  [style.animation-delay.s]="i * 0.1">
+                  <div class="example-header">
+                    <div class="example-info">
+                      <h4>{{ example.title }}</h4>
+                      <p>{{ example.description }}</p>
+                    </div>
+                    <div class="example-actions">
+                      <button class="copy-example-btn" (click)="copyExample(example.code)">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                          <path d="m4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                        </svg>
+                        {{ getExampleCopyText(standaloneExamples.length + i) }}
+                      </button>
+                    </div>
+                  </div>
+                  <div class="code-container">
+                    <pre><code class="language-ts">{{ example.code }}</code></pre>
+                  </div>
                 </div>
-                <div class="example-actions">
-                  <button class="copy-example-btn" (click)="copyExample(example.code)">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                      <path d="m4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-                    </svg>
-                    {{ getExampleCopyText(standaloneExamples.length + i) }}
-                  </button>
-                </div>
-              </div>
-              <div class="code-container">
-                <pre><code class="language-ts">{{ example.code }}</code></pre>
-              </div>
+              }
             </div>
           </div>
-        </div>
+        }
       </div>
     </div>
 
@@ -117,13 +126,15 @@
         </h3>
       </div>
       <div class="practices-grid">
-        <div *ngFor="let practice of bestPractices" class="practice-item">
-          <div class="practice-icon">{{ practice.icon }}</div>
-          <div class="practice-content">
-            <h4>{{ practice.title }}</h4>
-            <p>{{ practice.description }}</p>
+        @for (practice of bestPractices; track practice) {
+          <div class="practice-item">
+            <div class="practice-icon">{{ practice.icon }}</div>
+            <div class="practice-content">
+              <h4>{{ practice.title }}</h4>
+              <p>{{ practice.description }}</p>
+            </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   </div>

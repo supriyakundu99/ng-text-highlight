@@ -23,39 +23,39 @@
       </div>
 
       <div class="styles-grid">
-        <div *ngFor="let style of styles; let i = index" 
-             class="style-card glass"
-             [style.animation-delay.s]="i * 0.1">
-          <div class="style-header">
-            <div class="style-info">
-              <h4>{{ style.name }}</h4>
-              <div class="style-meta">
-                <code class="style-class">{{ style.class }}</code>
-                <button class="copy-class-btn" (click)="copyStyleClass(style.class)">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                    <path d="m4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-                  </svg>
-                  {{ getStyleCopyText(i) }}
-                </button>
+        @for (style of styles; track style; let i = $index) {
+          <div
+            class="style-card glass"
+            [style.animation-delay.s]="i * 0.1">
+            <div class="style-header">
+              <div class="style-info">
+                <h4>{{ style.name }}</h4>
+                <div class="style-meta">
+                  <code class="style-class">{{ style.class }}</code>
+                  <button class="copy-class-btn" (click)="copyStyleClass(style.class)">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                      <path d="m4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                    </svg>
+                    {{ getStyleCopyText(i) }}
+                  </button>
+                </div>
+              </div>
+              <div class="style-color" [style.background]="getStyleColor(style.class)"></div>
+            </div>
+            <p class="style-description">{{ style.description }}</p>
+            <div class="style-preview">
+              <div class="preview-label">Live Preview</div>
+              <div class="preview-content">
+                <ng-text-highlight
+                  [fullText]="sampleText"
+                  [keywords]="['Angular', 'highlight', 'style']"
+                  [highlightClass]="style.class"
+                ></ng-text-highlight>
               </div>
             </div>
-            <div class="style-color" [style.background]="getStyleColor(style.class)"></div>
           </div>
-          
-          <p class="style-description">{{ style.description }}</p>
-          
-          <div class="style-preview">
-            <div class="preview-label">Live Preview</div>
-            <div class="preview-content">
-              <ng-text-highlight
-                [fullText]="sampleText"
-                [keywords]="['Angular', 'highlight', 'style']"
-                [highlightClass]="style.class"
-              ></ng-text-highlight>
-            </div>
-          </div>
-        </div>
+        }
       </div>
     </div>
 
@@ -117,13 +117,15 @@
         </h3>
       </div>
       <div class="tips-grid">
-        <div *ngFor="let tip of stylingTips" class="tip-item">
-          <div class="tip-icon">{{ tip.icon }}</div>
-          <div class="tip-content">
-            <h4>{{ tip.title }}</h4>
-            <p>{{ tip.description }}</p>
+        @for (tip of stylingTips; track tip) {
+          <div class="tip-item">
+            <div class="tip-icon">{{ tip.icon }}</div>
+            <div class="tip-content">
+              <h4>{{ tip.title }}</h4>
+              <p>{{ tip.description }}</p>
+            </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   </div>

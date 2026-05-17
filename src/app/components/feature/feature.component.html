@@ -12,23 +12,25 @@
     </div>
 
     <div class="features-grid animate-fade-in-up">
-      <div *ngFor="let feature of features; let i = index" 
-           class="feature-card glass"
-           [style.animation-delay.s]="i * 0.1">
-        <div class="feature-icon-wrapper">
-          <div class="feature-icon" [innerHTML]="feature.icon"></div>
-          <div class="icon-glow"></div>
+      @for (feature of features; track feature; let i = $index) {
+        <div
+          class="feature-card glass"
+          [style.animation-delay.s]="i * 0.1">
+          <div class="feature-icon-wrapper">
+            <div class="feature-icon" [innerHTML]="feature.icon"></div>
+            <div class="icon-glow"></div>
+          </div>
+          <div class="feature-content">
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </div>
+          <div class="feature-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </div>
         </div>
-        <div class="feature-content">
-          <h3>{{ feature.title }}</h3>
-          <p>{{ feature.description }}</p>
-        </div>
-        <div class="feature-arrow">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="m9 18 6-6-6-6"/>
-          </svg>
-        </div>
-      </div>
+      }
     </div>
 
     <div class="api-section animate-fade-in-up">
@@ -42,13 +44,13 @@
         </h3>
         <p>Complete reference for all available inputs and their types</p>
       </div>
-      
+
       <div class="inputs-table glass">
         <div class="table-header">
           <h4>Available Inputs</h4>
           <div class="table-badge">{{inputs.length}} properties</div>
         </div>
-        
+
         <div class="table-container">
           <table class="modern-table">
             <thead>
@@ -60,26 +62,31 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let input of inputs; let i = index" 
+              @for (input of inputs; track input; let i = $index) {
+                <tr
                   class="table-row"
                   [style.animation-delay.s]="i * 0.05">
-                <td>
-                  <div class="property-cell">
-                    <code class="property-name">{{ input.name }}</code>
-                    <span class="property-required" *ngIf="input.required">*</span>
-                  </div>
-                </td>
-                <td>
-                  <code class="type-badge">{{ input.type }}</code>
-                </td>
-                <td class="description-cell">{{ input.description }}</td>
-                <td>
-                  <code class="default-value" *ngIf="input.default; else noDefault">{{ input.default }}</code>
-                  <ng-template #noDefault>
-                    <span class="no-default">—</span>
-                  </ng-template>
-                </td>
-              </tr>
+                  <td>
+                    <div class="property-cell">
+                      <code class="property-name">{{ input.name }}</code>
+                      @if (input.required) {
+                        <span class="property-required">*</span>
+                      }
+                    </div>
+                  </td>
+                  <td>
+                    <code class="type-badge">{{ input.type }}</code>
+                  </td>
+                  <td class="description-cell">{{ input.description }}</td>
+                  <td>
+                    @if (input.default) {
+                      <code class="default-value">{{ input.default }}</code>
+                    } @else {
+                      <span class="no-default">—</span>
+                    }
+                  </td>
+                </tr>
+              }
             </tbody>
           </table>
         </div>

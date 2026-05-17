@@ -23,6 +23,10 @@ class TestHostComponent {
   highlightStyle = {};
 }
 
+function normalizeText(text: string | null | undefined): string {
+  return (text ?? '').replace(/\s+/g, ' ').trim();
+}
+
 describe('TextHighlightComponent Integration', () => {
   let component: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
@@ -45,7 +49,9 @@ describe('TextHighlightComponent Integration', () => {
     expect(highlightedElements.length).toBe(2);
     expect(highlightedElements[0].textContent).toBe('Angular');
     expect(highlightedElements[1].textContent).toBe('framework');
-    expect(compiled.textContent).toBe('Angular is a powerful framework for building web applications');
+    expect(normalizeText(compiled.textContent)).toBe(
+      'Angular is a powerful framework for building web applications',
+    );
   });
 
   it('should update highlights when keywords change', () => {
@@ -95,6 +101,6 @@ describe('TextHighlightComponent Integration', () => {
     const highlightedElements = compiled.querySelectorAll('.highlight');
     
     expect(highlightedElements.length).toBe(0);
-    expect(compiled.textContent).toBe(component.text);
+    expect(normalizeText(compiled.textContent)).toBe(component.text);
   });
 });

@@ -1,11 +1,11 @@
 import { AfterViewChecked, Component } from "@angular/core";
 import { CodeExample } from "./usage.model";
-import { NgClass, NgFor, NgIf } from "@angular/common";
+import { NgClass } from "@angular/common";
 import { HighlightService } from "src/app/services/highlight.service";
 
 @Component({
   selector: "app-usage",
-  imports: [NgIf, NgClass, NgFor],
+  imports: [NgClass],
   templateUrl: "./usage.component.html",
   styleUrl: "./usage.component.scss",
 })

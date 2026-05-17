@@ -9,7 +9,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 export class HeroComponent implements OnInit, OnDestroy {
   copied = false;
   badgeText = '';
-  private fullBadgeText = 'Angular 19+ Compatible';
+  private fullBadgeText = 'Angular 21+ Compatible';
   private typingInterval: any;
 
   exampleCode = `<ng-text-highlight

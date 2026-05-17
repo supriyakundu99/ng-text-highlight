@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgIf, NgStyle } from "@angular/common";
+import { NgClass, NgStyle } from "@angular/common";
 import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { TextSegment } from "./models/text-segment";
 import { findAllMatches } from "./services/text-highlight.service";
@@ -12,7 +12,7 @@ import { TextChunk } from "./models/text-chunk";
   selector: "ng-text-highlight",
   templateUrl: "./text-highlight.component.html",
   styleUrls: ["./text-highlight.component.scss"],
-  imports: [NgFor, NgIf, NgClass, NgStyle],
+  imports: [NgClass, NgStyle],
   standalone: true,
 })
 export class TextHighlightComponent implements OnChanges {

@@ -1,10 +1,10 @@
-import { CommonModule } from "@angular/common";
+
 import { Component } from "@angular/core";
 import { Feature } from "./feature.model";
 
 @Component({
   selector: "app-feature",
-  imports: [CommonModule],
+  imports: [],
   templateUrl: "./feature.component.html",
   styleUrl: "./feature.component.scss",
 })

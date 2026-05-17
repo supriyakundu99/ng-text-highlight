@@ -2,6 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SimpleChange } from '@angular/core';
 import { TextHighlightComponent } from './text-highlight.component';
 
+function normalizeText(text: string | null | undefined): string {
+  return (text ?? '').replace(/\s+/g, ' ').trim();
+}
+
 describe('TextHighlightComponent', () => {
   let component: TextHighlightComponent;
   let fixture: ComponentFixture<TextHighlightComponent>;
@@ -132,7 +136,7 @@ describe('TextHighlightComponent', () => {
       
       expect(highlightedSpan).toBeTruthy();
       expect(highlightedSpan.textContent).toBe('world');
-      expect(compiled.textContent).toBe('Hello world');
+      expect(normalizeText(compiled.textContent)).toBe('Hello world');
     });
 
     it('should apply custom styles', () => {
@@ -143,8 +147,8 @@ describe('TextHighlightComponent', () => {
       fixture.detectChanges();
 
       const compiled = fixture.nativeElement;
-      const highlightedSpan = compiled.querySelector('span[ng-reflect-ng-style]');
-      
+      const highlightedSpan = compiled.querySelector('.highlight');
+
       expect(highlightedSpan).toBeTruthy();
     });
   });

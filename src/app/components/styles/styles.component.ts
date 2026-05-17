@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
 import { StyleExample } from "./styles.model";
-import { NgFor } from "@angular/common";
+
 import { TextHighlightComponent } from "ng-text-highlight";
 
 @Component({
   selector: "app-styles",
-  imports: [NgFor, TextHighlightComponent],
+  imports: [TextHighlightComponent],
   templateUrl: "./styles.component.html",
   styleUrl: "./styles.component.scss",
 })

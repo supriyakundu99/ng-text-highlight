@@ -1,8 +1,7 @@
-<span *ngFor="let segment of highlightedSegments">
-  <span
-    *ngIf="segment.isHighlighted; else normalText"
-    [ngClass]="highlightClass"
-    [ngStyle]="highlightStyle"
-  >{{ segment.text }}</span>
-  <ng-template #normalText>{{ segment.text }}</ng-template>
-</span>
+@for (segment of highlightedSegments; track $index) {
+  @if (segment.isHighlighted) {
+    <span [ngClass]="highlightClass" [ngStyle]="highlightStyle">{{ segment.text }}</span>
+  } @else {
+    <span>{{ segment.text }}</span>
+  }
+}
