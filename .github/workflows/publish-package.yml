@@ -81,6 +81,10 @@ jobs:
     name: Publish to npm
     needs: unit-test
     runs-on: ubuntu-latest
+    # Required for npm Trusted Publishing (OIDC). See https://docs.npmjs.com/trusted-publishers
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Download dist artifact
         uses: actions/download-artifact@v4
@@ -88,12 +92,19 @@ jobs:
           name: ng-text-highlight-dist
           path: dist/ng-text-highlight/
 
-      - name: Authenticate with npm
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+      # Auth: npm Trusted Publishing (preferred) OR granular token in NPM_AUTH_TOKEN.
+      # Classic npm tokens were revoked Dec 2025 — they no longer work in CI.
+      - name: Set up Node.js for npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.14.0"
+          registry-url: "https://registry.npmjs.org"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Publish Library to npm
+        working-directory: dist/ng-text-highlight
         run: |
-          cd dist/ng-text-highlight
           PKG_NAME=$(node -p "require('./package.json').name")
           PKG_VERSION=$(node -p "require('./package.json').version")
 
@@ -102,7 +113,7 @@ jobs:
           if npm view "$PKG_NAME@$PKG_VERSION" > /dev/null 2>&1; then
             echo "::warning ::Version $PKG_VERSION of $PKG_NAME already exists. Skipping publish."
           else
-            npm publish
+            npm publish --access public
           fi
 
   github-publish:
