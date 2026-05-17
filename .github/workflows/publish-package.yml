@@ -88,21 +88,37 @@ jobs:
           name: ng-text-highlight-dist
           path: dist/ng-text-highlight/
 
-      - name: Authenticate with npm
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+      - name: Set up Node.js for npm publish
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.14.0"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Verify npm authentication
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "::error::NPM_AUTH_TOKEN secret is missing or empty. Add an npm Automation token in repo Settings → Secrets."
+            exit 1
+          fi
+          npm whoami --registry=https://registry.npmjs.org/
+          echo "Authenticated as $(npm whoami --registry=https://registry.npmjs.org/)"
 
       - name: Publish Library to npm
+        working-directory: dist/ng-text-highlight
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
-          cd dist/ng-text-highlight
           PKG_NAME=$(node -p "require('./package.json').name")
           PKG_VERSION=$(node -p "require('./package.json').version")
 
           echo "Checking if version $PKG_VERSION of $PKG_NAME already exists on npm..."
 
-          if npm view "$PKG_NAME@$PKG_VERSION" > /dev/null 2>&1; then
+          if npm view "$PKG_NAME@$PKG_VERSION" --registry=https://registry.npmjs.org/ > /dev/null 2>&1; then
             echo "::warning ::Version $PKG_VERSION of $PKG_NAME already exists. Skipping publish."
           else
-            npm publish
+            npm publish --access public --registry=https://registry.npmjs.org/
           fi
 
   github-publish:
